@@ -6,6 +6,9 @@ GEM
     backports (3.11.4)
     buftok (0.2.0)
     daemons (1.2.6)
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
@@ -43,6 +46,9 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rake (12.3.1)
+    ruby-debug-ide (0.6.1)
+      rake (>= 0.8.1)
     simple_oauth (0.3.1)
     sinatra (1.4.8)
       rack (~> 1.5)
@@ -81,9 +87,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  debase
   foreman
   omniauth
   omniauth-twitter
+  ruby-debug-ide
   sinatra (~> 1.4.6)
   sinatra-contrib
   thin
