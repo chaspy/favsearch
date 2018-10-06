@@ -53,7 +53,7 @@ $(function() {
 
       if ($(".list").length === 0) {
         // $(".list").length === 0は当てはまるものがないということなので、その処理。
-        appendList("一致する果物はありませんでした");
+        appendList("No result");
       }
     }
     preWord = word;
