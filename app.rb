@@ -19,7 +19,7 @@ end
 
 use Rack::Session::Cookie
 use OmniAuth::Builder do
-  provider :twitter, YOUR_CONSUMER_KEY, YOUR_CONSUMER_SECRET
+  provider :twitter, ENV.fetch('YOUR_CONSUMER_KEY'), ENV.fetch('YOUR_CONSUMER_SECRET')
 end
 
 get '/' do
