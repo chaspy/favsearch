@@ -43,9 +43,5 @@ get '/auth/:provider/callback' do
   result_fav.each do |a|
     fav_tweets.push(a.full_text)
   end
-
-  erb "<a href='/'>Top</a><br>
-       <h1>#{params[:provider]}</h1>
-       <h2>Your fav count number: #{fav_tweets.count}</h2>
-       <pre>#{JSON.pretty_generate(fav_tweets)}</pre>"
+  fav_tweets.to_json
 end
