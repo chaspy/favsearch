@@ -1,8 +1,9 @@
-version: '2'
+version: "2"
 services:
-  mysql:
+  favsearch:
+    container_name: "favseach"
     build: .
     volumes:
       - ./:/app
     ports:
-      - '4567:4567'
+      - "4567:4567"
