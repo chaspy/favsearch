@@ -36,12 +36,10 @@ end
 
 # return Access Token
 get '/auth/:provider/callback' do
-  p 'START CALLBACK'
   # Save session
   session[:uid] = env['omniauth.auth']['uid']
 
   result = request.env['omniauth.auth']
-  pp result.credentials
   @twitter.access_token = result.credentials.token
   @twitter.access_token_secret = result.credentials.secret
   result_fav = @twitter.favorites(count: '200')
