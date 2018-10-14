@@ -23,7 +23,7 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  erb "<a href='/auth/twitter'>Login with Twitter</a><br>"
+  erb :index
 end
 
 # Do Authentication
