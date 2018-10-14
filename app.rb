@@ -23,7 +23,11 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  erb "<a href='/auth/twitter'>Login with Twitter</a><br>"
+  if current_user
+    redirect to('/auth/twitter')
+  else
+    erb :index
+  end
 end
 
 # Do Authentication
@@ -32,9 +36,10 @@ end
 
 # return Access Token
 get '/auth/:provider/callback' do
-  p 'START CALLBACK'
+  # Save session
+  session[:uid] = env['omniauth.auth']['uid']
+
   result = request.env['omniauth.auth']
-  pp result.credentials
   @twitter.access_token = result.credentials.token
   @twitter.access_token_secret = result.credentials.secret
   result_fav = @twitter.favorites(count: '200')
@@ -44,4 +49,11 @@ get '/auth/:provider/callback' do
     fav_tweets.push(a.full_text)
   end
   fav_tweets.to_json
+end
+
+helpers do
+  def current_user
+    # If logined, return true
+    !session[:uid].nil?
+  end
 end
