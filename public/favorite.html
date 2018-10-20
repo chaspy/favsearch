@@ -1,34 +1,26 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <div id="fav">
-  {{ message }}
+  {{ favorites }}
 </div>
 
 <script>
+
 var fav = new Vue({
   el: '#fav',
   data: {
-    message: 'Hello Favorite!'
+    favorites: ['favorites']
+  },
+  methods: {
+    async getFavorites() {
+      var url = 'http://localhost:4567/favorite';
+      await axios.get(url).then(x => { this.favorites = x.data; });
+    }
+  },
+  mounted() {
+    this.getFavorites();
   }
 })
 
-var favorite = getFavorite()
-console.log(favorite)
-
-function getFavorite() {
-    const request = new XMLHttpRequest();
-    request.open("GET", `http://localhost:4567/favorite`);
-    request.addEventListener("load", (event) => {
-        if (event.target.status !== 200) {
-            console.log(`${event.target.status}: ${event.target.statusText}`);
-            return;
-        }
-        console.log(event.target.status);
-        console.log(event.target.responseText);
-    });
-    request.addEventListener("error", () => {
-        console.error("Network Error");
-    });
-    request.send();
-}
 </script>
