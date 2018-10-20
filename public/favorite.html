@@ -18,7 +18,7 @@ var fav = new Vue({
       await axios.get(url).then(x => { this.favorites = x.data; });
     }
   },
-  mounted() {
+  created() {
     this.getFavorites();
   }
 })
