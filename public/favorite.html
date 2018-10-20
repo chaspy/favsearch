@@ -8,7 +8,6 @@
   {{ message }}
 </div>
 
-
 <script>
 var app = new Vue({
   el: '#app',
@@ -24,4 +23,23 @@ var fav = new Vue({
   }
 })
 
+var favorite = getFavorite()
+console.log(favorite)
+
+function getFavorite() {
+    const request = new XMLHttpRequest();
+    request.open("GET", `http://localhost:4567/favorite`);
+    request.addEventListener("load", (event) => {
+        if (event.target.status !== 200) {
+            console.log(`${event.target.status}: ${event.target.statusText}`);
+            return;
+        }
+        console.log(event.target.status);
+        console.log(event.target.responseText);
+    });
+    request.addEventListener("error", () => {
+        console.error("Network Error");
+    });
+    request.send();
+}
 </script>
