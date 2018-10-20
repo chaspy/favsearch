@@ -27,11 +27,10 @@ var fav = new Vue({
       await axios.get(url).then(x => { this.favorites = x.data; });
     },
     search: function(word) {
-      query = word;
       if (this.favorites[0] === "Loading...") {
         return false
       } else {
-        return this.favorites.filter(x => x.text.indexOf(query) !== -1)
+        return this.favorites.filter(x => x.text.indexOf(word) !== -1)
       }
     }
   },
