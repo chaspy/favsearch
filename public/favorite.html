@@ -4,7 +4,7 @@
 <div id="fav">
   <input type="search" placeholder="Search" v-model="word" v-on:input="search"><br>
   <li v-for="favorite in itemsFiltered">
-    {{ favorite.text }}
+    <a v-bind:href="favorite.uri">{{ favorite.text }}</a>
   </li>
 </div>
 
