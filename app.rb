@@ -23,11 +23,7 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  if current_user
-    redirect to('/auth/twitter')
-  else
-    erb :index
-  end
+  erb :index
 end
 
 # return Access Token
@@ -36,7 +32,7 @@ get '/auth/:provider/callback' do
   session[:uid] = env['omniauth.auth']['uid']
   session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
-  redirect to('/favorite')
+  redirect to('/')
 end
 
 get '/favorite' do
