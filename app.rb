@@ -31,7 +31,7 @@ get '/auth/:provider/callback' do
   # Save session
   session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
-  redirect to('/')
+  redirect to('/top')
 end
 
 get '/favorite' do
