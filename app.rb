@@ -30,10 +30,6 @@ get '/' do
   end
 end
 
-# Do Authentication
-get '/auth' do
-end
-
 # return Access Token
 get '/auth/:provider/callback' do
   # Save session
