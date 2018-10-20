@@ -29,7 +29,6 @@ end
 # return Access Token
 get '/auth/:provider/callback' do
   # Save session
-  session[:uid] = env['omniauth.auth']['uid']
   session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
   redirect to('/')
@@ -45,11 +44,4 @@ get '/favorite' do
     fav_tweets.push(a.full_text)
   end
   fav_tweets.to_json
-end
-
-helpers do
-  def current_user
-    # If logined, return true
-    !session[:uid].nil?
-  end
 end
