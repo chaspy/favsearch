@@ -34,7 +34,7 @@ get '/auth/:provider/callback' do
   redirect to('/top')
 end
 
-get '/favorite' do
+get '/api/v1.0/favorite' do
   @twitter.access_token = session[:twitter_oauth].token
   @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
