@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+
+<div id="fav">
+  {{ favorites }}
+</div>
+
+<script>
+
+var fav = new Vue({
+  el: '#fav',
+  data: {
+    favorites: ['Loading...']
+  },
+  methods: {
+    async getFavorites() {
+      var url = 'http://localhost:4567/api/v1.0/favorite';
+      await axios.get(url).then(x => { this.favorites = x.data; });
+    }
+  },
+  created() {
+    this.getFavorites();
+  }
+})
+
+</script>

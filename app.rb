@@ -23,25 +23,20 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  if current_user
-    redirect to('/auth/twitter')
-  else
-    erb :index
-  end
-end
-
-# Do Authentication
-get '/auth' do
+  erb :index
 end
 
 # return Access Token
 get '/auth/:provider/callback' do
   # Save session
-  session[:uid] = env['omniauth.auth']['uid']
+  session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
-  result = request.env['omniauth.auth']
-  @twitter.access_token = result.credentials.token
-  @twitter.access_token_secret = result.credentials.secret
+  redirect to('/top')
+end
+
+get '/api/v1.0/favorite' do
+  @twitter.access_token = session[:twitter_oauth].token
+  @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
   fav_tweets = []
 
@@ -51,9 +46,10 @@ get '/auth/:provider/callback' do
   fav_tweets.to_json
 end
 
-helpers do
-  def current_user
-    # If logined, return true
-    !session[:uid].nil?
-  end
+get '/top' do
+  html :favorite
+end
+
+def html(view)
+  File.read(File.join('public', "#{view.to_s}.html"))
 end
