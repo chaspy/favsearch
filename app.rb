@@ -45,3 +45,11 @@ get '/favorite' do
   end
   fav_tweets.to_json
 end
+
+get '/top' do
+  html :favorite
+end
+
+def html(view)
+  File.read(File.join('public', "#{view.to_s}.html"))
+end
