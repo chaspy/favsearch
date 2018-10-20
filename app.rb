@@ -38,10 +38,14 @@ end
 get '/auth/:provider/callback' do
   # Save session
   session[:uid] = env['omniauth.auth']['uid']
+  session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
-  result = request.env['omniauth.auth']
-  @twitter.access_token = result.credentials.token
-  @twitter.access_token_secret = result.credentials.secret
+  redirect to('/favorite')
+end
+
+get '/favorite' do
+  @twitter.access_token = session[:twitter_oauth].token
+  @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
   fav_tweets = []
 
