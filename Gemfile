@@ -9,3 +9,4 @@ gem 'omniauth-twitter'
 gem 'sinatra-contrib'
 gem "ruby-debug-ide"
 gem "debase"
+gem 'newrelic_rpm'
