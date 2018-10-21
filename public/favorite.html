@@ -2,7 +2,10 @@
 <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
 
 <div id="fav">
-  {{ favorites }}
+  <input type="search" placeholder="Search" v-model="word" v-on:input="search"><br>
+  <li v-for="favorite in itemsFiltered">
+    <a v-bind:href="favorite.uri">{{ favorite.text }}</a>
+  </li>
 </div>
 
 <script>
@@ -10,17 +13,30 @@
 var fav = new Vue({
   el: '#fav',
   data: {
+    word: "",
     favorites: ['Loading...']
+  },
+  computed: {
+    itemsFiltered: function () {
+      return this.search(this.word)
+    }  
   },
   methods: {
     async getFavorites() {
       var url = 'http://localhost:4567/api/v1.0/favorite';
       await axios.get(url).then(x => { this.favorites = x.data; });
+    },
+    search: function(word) {
+      if (this.favorites[0] === "Loading...") {
+        return false
+      } else {
+        return this.favorites.filter(x => x.text.indexOf(word) !== -1)
+      }
     }
   },
   created() {
     this.getFavorites();
-  }
+  },
 })
 
 </script>

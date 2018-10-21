@@ -40,8 +40,9 @@ get '/api/v1.0/favorite' do
   result_fav = @twitter.favorites(count: '200')
   fav_tweets = []
 
-  result_fav.each do |a|
-    fav_tweets.push(a.full_text)
+  result_fav.each do |tw|
+    hash = {:uri => tw.uri, :text => tw.full_text}
+    fav_tweets.push(hash)
   end
   fav_tweets.to_json
 end
