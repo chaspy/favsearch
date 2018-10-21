@@ -2,7 +2,11 @@ version: "2"
 services:
   favsearch:
     container_name: "favseach"
-    build: .
+    build:
+      context: .
+      args:
+        - YOUR_CONSUMER_KEY=$YOUR_CONSUMER_KEY
+        - YOUR_CONSUMER_SECRET=$YOUR_CONSUMER_SECRET
     volumes:
       - ./:/app
     ports:

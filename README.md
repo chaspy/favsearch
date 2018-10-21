@@ -3,7 +3,7 @@ incremental search your favorite tweet
 
 ## Development
 
-You can run application using docker.
+You can run application using Docker and docker-compose.
 
 ```
   $ ./run.sh
