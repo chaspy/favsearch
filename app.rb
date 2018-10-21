@@ -7,6 +7,10 @@ require 'sinatra/reloader'
 
 enable :sessions
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 # Twitter API initialization
 before do
   @twitter = Twitter::REST::Client.new do |config|
