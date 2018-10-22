@@ -2,6 +2,13 @@
 }
 
 .text-light:hover {
-  text-decoration:none;
+  text-decoration: none;
 }
 
+body {
+  font-family: "M PLUS 1p", sans-serif;
+}
+
+a {
+  color:#555555;
+}
