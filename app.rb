@@ -6,6 +6,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 
 enable :sessions
+$stdout.sync = true
 
 # Twitter API initialization
 before do
@@ -31,10 +32,16 @@ get '/auth/:provider/callback' do
   # Save session
   session[:twitter_oauth] = env['omniauth.auth'][:credentials]
 
+  puts "env['omniauth.auth'][:credentials].inspect"
+  puts env['omniauth.auth'][:credentials].inspect
+
   redirect to('/top')
 end
 
 get '/api/v1.0/favorite' do
+  puts "session[:twitter_oauth].token"
+  puts session[:twitter_oauth].token
+
   @twitter.access_token = session[:twitter_oauth].token
   @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
