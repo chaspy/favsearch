@@ -35,22 +35,30 @@ get '/auth/:provider/callback' do
 end
 
 get '/api/v1.0/favorite' do
+  puts 'session[:twitter_oauth].token'
+  puts session[:twitter_oauth].token
+
   @twitter.access_token = session[:twitter_oauth].token
   @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
   fav_tweets = []
 
   result_fav.each do |tw|
-    hash = {:uri => tw.uri, :text => tw.full_text}
+    hash = { uri: tw.uri, text: tw.full_text }
     fav_tweets.push(hash)
   end
   fav_tweets.to_json
 end
 
 get '/top' do
-  html :favorite
+  @DomainName = if request.port.nil? && ((request.port == '443') || (request.port == '80'))
+                  request.scheme + '://' + request.host
+                else
+                  request.scheme + '://' + request.host + ':' + request.port.to_s
+                end
+  erb :favorite
 end
 
 def html(view)
-  File.read(File.join('public', "#{view.to_s}.html"))
+  File.read(File.join('public', "#{view}.html"))
 end
