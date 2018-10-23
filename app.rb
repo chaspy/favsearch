@@ -5,7 +5,11 @@ require 'omniauth-twitter'
 require 'sinatra/base'
 require 'sinatra/reloader'
 
-enable :sessions
+configure do
+  use Rack::Session::Cookie,
+      expire_after: 3600,
+      secret: 'change'
+end
 
 # Twitter API initialization
 before do
@@ -35,9 +39,6 @@ get '/auth/:provider/callback' do
 end
 
 get '/api/v1.0/favorite' do
-  puts 'session[:twitter_oauth].token'
-  puts session[:twitter_oauth].token
-
   @twitter.access_token = session[:twitter_oauth].token
   @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = @twitter.favorites(count: '200')
