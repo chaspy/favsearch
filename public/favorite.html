@@ -50,7 +50,9 @@
       methods: {
         async getFavorites() {
           var url = 'http://favsearch.chaspy.me/api/v1.0/favorite';
-          await axios.get(url).then(x => {
+          await axios.get(url,{
+            withCredentials: true
+          }).then(x => {
             this.favorites = x.data;
           });
         },
