@@ -1,0 +1,56 @@
+{
+  "name": "favsearch",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "LANG": {
+      "required": true
+    },
+    "LIBRATO_PASSWORD": {
+      "required": true
+    },
+    "LIBRATO_TOKEN": {
+      "required": true
+    },
+    "LIBRATO_USER": {
+      "required": true
+    },
+    "NEW_RELIC_APP_NAME": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": true
+    },
+    "NEW_RELIC_LOG": {
+      "required": true
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "YOUR_CONSUMER_KEY": {
+      "required": true
+    },
+    "YOUR_CONSUMER_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "librato",
+    "newrelic",
+    "papertrail"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
