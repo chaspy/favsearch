@@ -60,7 +60,9 @@
           if (this.favorites[0] === "Loading...") {
             return false
           } else {
-            return this.favorites.filter(x => x.text.indexOf(word) !== -1)
+            return this.favorites.filter(x =>
+              x.text.indexOf(word) !== -1 || x.postuser.indexOf(word) !== -1
+            )
           }
         }
       },
