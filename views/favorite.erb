@@ -28,7 +28,7 @@
       <input type="text" placeholder="Search" v-model="word" v-on:input="search" class="form-control">
       <p>{{itemsFiltered.length}} / {{favorites.length}}</p>
       <li v-for="favorite in itemsFiltered" class="list-group-item">
-        <a v-bind:href="favorite.uri">{{ favorite.text }}</a>
+        <a v-bind:href="favorite.uri">{{ favorite.text }} from {{favorite.postuser}}</a>
       </li>
     </div>
   </div>
