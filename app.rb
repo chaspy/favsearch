@@ -45,7 +45,7 @@ get '/api/v1.0/favorite' do
   fav_tweets = []
 
   result_fav.each do |tw|
-    hash = { uri: tw.uri, text: tw.full_text }
+    hash = { uri: tw.uri, text: tw.full_text, postuser: tw.user.name }
     fav_tweets.push(hash)
   end
   fav_tweets.to_json
