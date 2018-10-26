@@ -4,11 +4,12 @@ require 'omniauth'
 require 'omniauth-twitter'
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'digest/sha2'
 
 configure do
   use Rack::Session::Cookie,
       expire_after: 3600,
-      secret: 'change'
+      secret: Digest::SHA256.hexdigest(rand.to_s)
 end
 
 # Twitter API initialization
