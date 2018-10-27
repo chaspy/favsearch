@@ -1,5 +1,5 @@
 # favsearch
-incremental search your favorite tweet
+Incremental search of your favorite tweets
 
 ## Development
 
