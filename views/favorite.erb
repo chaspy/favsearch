@@ -61,7 +61,7 @@
             return false
           } else {
             return this.favorites.filter(x =>
-              x.text.indexOf(word) !== -1 || x.post_user_name.indexOf(word) !== -1 || x.post_user_screan_name.indexOf(word) !== -1
+              x.text.toLowerCase().indexOf(word.toLowerCase()) !== -1 || x.post_user_name.indexOf(word) !== -1 || x.post_user_screan_name.indexOf(word) !== -1
             )
           }
         }
