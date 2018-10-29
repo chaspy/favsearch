@@ -27,7 +27,7 @@
       <input type="text" placeholder="Search" v-model="word" v-on:input="search" class="form-control">
       <p>{{itemsFiltered.length}} / {{favorites.length}}</p>
       <li v-for="favorite in itemsFiltered" class="list-group-item">
-        <a v-bind:href="favorite.uri">{{ favorite.text }} from {{favorite.postuser}}</a>
+        <a v-bind:href="favorite.uri">{{ favorite.text }} from {{favorite.post_user_name}}({{ favorite.post_user_screan_name }})</a>
       </li>
     </div>
   </div>
@@ -60,7 +60,7 @@
             return false
           } else {
             return this.favorites.filter(x =>
-              x.text.indexOf(word) !== -1 || x.postuser.indexOf(word) !== -1
+              x.text.indexOf(word) !== -1 || x.post_user_name.indexOf(word) !== -1 || x.post_user_screan_name.indexOf(word) !== -1
             )
           }
         }
