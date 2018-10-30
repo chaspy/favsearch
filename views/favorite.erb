@@ -28,6 +28,7 @@
       <p>{{itemsFiltered.length}} / {{favorites.length}}</p>
       <li v-for="favorite in itemsFiltered" class="list-group-item">
         <a v-bind:href="favorite.uri">{{ favorite.text }} from {{favorite.post_user_name}}({{ favorite.post_user_screan_name }})</a>
+        <div id="time">{{ favorite.created_at }}</div>
       </li>
     </div>
   </div>
