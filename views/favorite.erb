@@ -32,7 +32,7 @@
       </li>
     </div>
   </div>
-
+  <script src="./assets/js/stringfilter.js"></script>
   <script>
 
     var fav = new Vue({
@@ -64,6 +64,9 @@
               x.text.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
               || x.post_user_name.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
               || x.post_user_screan_name.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
+              || x.text._f('hira2kana').indexOf(this.word._f('hira2kana')) !== -1
+              || x.post_user_name._f('hira2kana').indexOf(this.word._f('hira2kana')) !== -1
+              || x.post_user_screan_name._f('hira2kana').indexOf(this.word._f('hira2kana')) !== -1
             )
           }
         }
