@@ -43,9 +43,13 @@ get '/api/v1.0/favorite' do
   @twitter.access_token = session[:twitter_oauth].token
   @twitter.access_token_secret = session[:twitter_oauth].secret
   result_fav = []
-  fav1 = @twitter.favorites(count: '200')
-  fav2 = @twitter.favorites(count: '200', max_id: fav1.last.id - 1)
-  result_fav = fav1 + fav2
+  max_id = 0
+  (1..5).each do |count|
+    max_id == 0 ? fav = @twitter.favorites(count: '200') : fav = @twitter.favorites(count: '200', max_id: max_id)
+    max_id = fav.last.id - 1
+    result_fav = result_fav + fav
+  end
+
   fav_tweets = []
 
   result_fav.each do |tw|
