@@ -61,9 +61,9 @@
             return false
           } else {
             return this.favorites.filter(x =>
-              x.text.toLowerCase().indexOf(word.toLowerCase()) !== -1
-              || x.post_user_name.toLowerCase().indexOf(word.toLowerCase()) !== -1
-              || x.post_user_screan_name.toLowerCase().indexOf(word.toLowerCase()) !== -1
+              x.text.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
+              || x.post_user_name.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
+              || x.post_user_screan_name.toLowerCase().indexOf(this.word.toLowerCase()) !== -1
             )
           }
         }
