@@ -1,7 +1,5 @@
 window.addEventListener('load', () => {
   let msgbox = document.getElementById('msgs');
-  let form = document.getElementById('form');
-  let sendMsg = document.getElementById('send-msg');
   let ws = new WebSocket('ws://' + window.location.host + '/websocket');
 
   ws.onopen = () => console.log('connection opened');
