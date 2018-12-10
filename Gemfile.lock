@@ -40,7 +40,7 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.3)
     naught (1.1.0)
-    newrelic_rpm (5.4.0.347)
+    newrelic_rpm (5.5.0.348)
     oauth (0.5.4)
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
