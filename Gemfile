@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', '~> 1.4.6'
+gem "rack", ">= 1.6.11"
 gem 'thin'
 gem 'foreman'
 gem 'twitter'
