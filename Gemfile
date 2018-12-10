@@ -10,4 +10,3 @@ gem 'sinatra-contrib'
 gem "ruby-debug-ide"
 gem "debase"
 gem 'newrelic_rpm'
-gem 'em-websocket'

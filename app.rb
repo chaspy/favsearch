@@ -5,8 +5,6 @@ require 'omniauth-twitter'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'digest/sha2'
-require 'em-websocket'
-require 'pp'
 
 configure do
   use Rack::Session::Cookie,
@@ -64,21 +62,6 @@ get '/top' do
                   request.scheme + '://' + request.host + ':' + request.port.to_s
                 end
   erb :favorite
-end
-
-get '/websocket' do
-  connnections = []
-
-  EM::WebSocket.start({:host => "0.0.0.0", :port => 8888}) do |ws_conn|
-    ws_conn.onopen do
-      connnections << ws_conn
-    end
-
-    ws_conn.onmessage do |message|
-      pp message
-      connnections.each{|conn| conn.send(message) }
-    end
-  end
 end
 
 def html(view)
