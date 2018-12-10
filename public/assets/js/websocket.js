@@ -9,12 +9,4 @@ window.addEventListener('load', () => {
     li.textContent = m.data;
     msgbox.insertBefore(li, msgbox.firstChild);
   }
-
-  sendMsg.addEventListener('click', () => sendMsg.value = '');
-
-  form.addEventListener('submit', e => {
-    ws.send(sendMsg.value);
-    sendMsg.value = '';
-    e.preventDefault();
-  });
 });

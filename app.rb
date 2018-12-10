@@ -10,6 +10,8 @@ Bundler.require
 require 'sinatra/reloader' if development?
 require 'sinatra-websocket'
 
+$stdout.sync = true
+
 set :server, 'thin'
 set :sockets, []
 
@@ -77,11 +79,16 @@ get '/websocket' do
       ws.onopen do
         settings.sockets << ws
       end
+
       ws.onmessage do |msg|
         settings.sockets.each do |s|
+          s.send("hoge")
+          sleep 5
+          pp msg
           s.send(msg)
         end
       end
+
       ws.onclose do
         settings.sockets.delete(ws)
       end
