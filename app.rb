@@ -54,6 +54,7 @@ get '/api/v1.0/favorite' do
     else
       favs = @twitter.favorites(count: '200', max_id: max_id)
     end
+    break if favs.empty?
     max_id = favs.last.id - 1
     result_fav = result_fav + favs
   end
