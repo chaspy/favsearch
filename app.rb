@@ -5,6 +5,7 @@ require 'omniauth-twitter'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'digest/sha2'
+require 'newrelic_rpm'
 
 configure do
   use Rack::Session::Cookie,
