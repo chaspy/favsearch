@@ -34,8 +34,10 @@
   <div class="container">
     <div id="fav">
       <input type="text" placeholder="Search" v-model="word" v-on:input="search" class="form-control">
-      <div v-show="loading" class="loader"></div>
-      <div v-show="loading" class="nowloading">Now Loading...</div>
+      <div v-show="loading" id="center">
+        <div v-show="loading" class="loader nowloading-image"></div>
+        <div v-show="loading" class="nowloading-text">Now Loading...</div>
+      </div>
       <p v-show="!loading">{{itemsFiltered.length}} / {{favorites.length}}</p>
      
       <li v-for="favorite in itemsFiltered" class="list-group-item">

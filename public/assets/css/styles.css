@@ -29,8 +29,27 @@ nav {
   color: #555555;
 }
 
-.nowloading{
-  margin: auto 0;
+#center{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.nowloading-image {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  font-size: 24px;
+  text-align:center;
+}
+.nowloading-text {
+  display: block;
+  position: absolute;
+  padding-top: 200px;
+  margin: 0 auto;
   font-size: 24px;
   text-align:center;
 }
