@@ -34,22 +34,28 @@
   <div class="container">
     <div id="fav">
       <input type="text" placeholder="Search" v-model="word" v-on:input="search" class="form-control">
-      <p>{{itemsFiltered.length}} / {{favorites.length}}</p>
+      <div v-show="loading" class="loader"></div>
+      <div v-show="loading" class="nowloading">Now Loading...</div>
+      <p v-show="!loading">{{itemsFiltered.length}} / {{favorites.length}}</p>
+     
       <li v-for="favorite in itemsFiltered" class="list-group-item">
         <a v-bind:href="favorite.uri">{{ favorite.text }} from {{favorite.post_user_name}}({{ favorite.post_user_screan_name }})</a>
         <div id="time">{{ favorite.created_at }}</div>
       </li>
     </div>
+
   </div>
   <script src="./assets/js/stringfilter.js"></script>
   <script>
 
     var fav = new Vue({
+      name: "favlist",
       el: '#fav',
       data: {
         word: "",
         favorites: ['Loading...'],
         hitcount: 0,
+        loading: true,
       },
       computed: {
         itemsFiltered: function () {
@@ -63,6 +69,7 @@
             withCredentials: true
           }).then(x => {
             this.favorites = x.data;
+            this.loading=false;
           });
         },
         search: function (word) {
@@ -84,7 +91,6 @@
         this.getFavorites();
       },
     })
-
   </script>
 </body>
 
