@@ -67,9 +67,9 @@ get '/api/v1.0/favorite' do
 end
 
 get '/top' do
-  @DomainName = if request.scheme == 'http' # for production
+  @DomainName = if request.port == 80 # for production
                   'https' + '://' + request.host
-                else                        # for local and staging
+                else                  # for local and staging
                   request.scheme + '://' + request.host + ':' + request.port.to_s
                 end
   erb :favorite
