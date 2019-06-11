@@ -46,8 +46,8 @@ GEM
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
-    rake (12.3.1)
-    ruby-debug-ide (0.6.1)
+    rake (12.3.2)
+    ruby-debug-ide (0.7.0)
       rake (>= 0.8.1)
     simple_oauth (0.3.1)
     sinatra (2.0.5)
