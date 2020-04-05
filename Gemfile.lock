@@ -38,7 +38,7 @@ GEM
     mustermann (1.1.0)
       ruby2_keywords (~> 0.0.1)
     naught (1.1.0)
-    newrelic_rpm (6.5.0.357)
+    newrelic_rpm (6.9.0.363)
     oauth (0.5.4)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
