@@ -18,7 +18,7 @@ GEM
       ffi (>= 1.0.0)
       rake
     foreman (0.87.1)
-    hashie (3.6.0)
+    hashie (4.1.0)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -39,8 +39,8 @@ GEM
     naught (1.1.0)
     newrelic_rpm (6.9.0.363)
     oauth (0.5.4)
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
     omniauth-oauth (1.1.0)
       oauth
