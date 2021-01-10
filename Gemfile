@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', '~> 2.0.8'
+gem 'sinatra', '~> 2.1.0'
 gem 'thin'
 gem 'foreman'
 gem 'twitter'
